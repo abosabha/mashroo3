@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تيك ستور - متجر الإلكترونيات وقطع الحاسوب</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="CSS/style.css">
+    <script src="/JS/home-products.js"></script> 
+    <script src="/JS/shared.js"></script>
+    <script src="/JS/script.js"></script>
+    
+
+
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex items-center justify-between">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <div class="bg-blue-600 text-white p-2 rounded-lg mr-2">
+                        <i class="fas fa-microchip text-xl"></i>
+                    </div>
+                    <h1 class="text-xl font-bold text-gray-800">تيك ستور</h1>
+                </div>
+                
+                <!-- Search Bar -->
+                <div class="hidden md:flex flex-1 mx-6">
+                    <div class="relative w-full max-w-xl">
+                        <input type="text" placeholder="ابحث عن منتجات..." class="w-full py-2 px-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        <button class="absolute left-0 top-0 h-full px-4 text-gray-500">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Navigation and Cart -->
+                <div class="flex items-center space-x-6">
+                    <button id="mobile-menu-button" class="md:hidden text-gray-600">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                    
+                    <nav class="hidden md:flex space-x-6 header_nav_a">
+                        <a href="index.html" class="text-gray-700 hover:text-blue-600 font-medium" style=" margin-left: 20px;">الرئيسية</a>
+                        <a href="products.html" class="text-gray-700 hover:text-blue-600 font-medium">المنتجات</a>
+                        <a href="offers.html" class="text-gray-700 hover:text-blue-600 font-medium">العروض</a>
+                        <a href="about.html" class="text-gray-700 hover:text-blue-600 font-medium">من نحن</a>
+                        <a href="contact.html" class="text-gray-700 hover:text-blue-600 font-medium">اتصل بنا</a>
+                        <a href="login.html" class="text-gray-700 hover:text-blue-600 font-medium">تسجيل الدخول</a>
+                    </nav>
+                    
+                    <div class="relative">
+                        <button id="cart-button" class="text-gray-700 hover:text-blue-600 relative">
+                            <i class="fas fa-shopping-cart text-xl"></i>
+                            <span id="cart-count" class="absolute -top-2 -right-2 bg-blue-600 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">0</span>
+                        </button>
+                        
+                        <!-- Cart Dropdown -->
+                        <div id="cart-dropdown" class="hidden absolute right-0 mt-2 w-72 bg-white rounded-lg shadow-xl z-50 border border-gray-200">
+                            <div class="p-4 border-b border-gray-200">
+                                <h3 class="font-bold text-gray-800">سلة التسوق</h3>
+                            </div>
+                            <div id="cart-items" class="max-h-60 overflow-y-auto p-2">
+                                <p class="text-gray-500 text-center py-4">السلة فارغة</p>
+                            </div>
+                            <div class="p-4 border-t border-gray-200">
+                                <div class="flex justify-between mb-3">
+                                    <span class="font-medium">المجموع:</span>
+                                    <span id="cart-total" class="font-bold">0.00 ر.س</span>
+                                </div>
+                                <a href="#" class="block w-full bg-blue-600 text-white py-2 text-center rounded-lg hover:bg-blue-700 transition">إتمام الشراء</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="hidden md:block">
+                        <a href="account.html" class="text-gray-700 hover:text-blue-600">
+                            <i class="fas fa-user text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden md:hidden mt-4">
+                <div class="flex flex-col space-y-3">
+                    <a href="#" class="block py-2 px-4 bg-gray-100 rounded-lg text-gray-700">الرئيسية</a>
+                    <a href="#" class="block py-2 px-4 bg-gray-100 rounded-lg text-gray-700">المنتجات</a>
+                    <a href="#" class="block py-2 px-4 bg-gray-100 rounded-lg text-gray-700">العروض</a>
+                    <a href="#" class="block py-2 px-4 bg-gray-100 rounded-lg text-gray-700">من نحن</a>
+                    <a href="#" class="block py-2 px-4 bg-gray-100 rounded-lg text-gray-700">اتصل بنا</a>
+                </div>
+                
+                <div class="mt-4">
+                    <input type="text" placeholder="ابحث عن منتجات..." class="w-full py-2 px-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-gradient text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-8 md:mb-0">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">أفضل قطع الحاسوب والإلكترونيات بأسعار تنافسية</h2>
+                    <p class="text-lg mb-6">اكتشف أحدث المنتجات من معالجات، كروت شاشة، هواتف ذكية، لابتوبات وملحقات بأفضل الأسعار</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="bg-white text-blue-600 px-6 py-2 rounded-lg font-medium hover:bg-gray-100 transition">تسوق الآن</a>
+                        <a href="#" class="border border-white px-6 py-2 rounded-lg font-medium hover:bg-white hover:text-blue-600 transition">العروض</a>
+                    </div>
+                </div>
+                <div class="md:w-1/2">
+                    <img src="IMG/index/1avif.avif" alt="إلكترونيات" class="rounded-lg shadow-xl">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories -->
+    <section class="py-12 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-2xl font-bold mb-8 text-center text-gray-800">تصفح حسب الفئة</h2>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4" id="categories-container">
+                <!-- All Categories Button (Added dynamically via JavaScript) -->
+                
+                <!-- Category 1 -->
+                <a href="#" class="category-card bg-white p-4 rounded-lg shadow-md text-center transition duration-300" data-category="laptops">
+                    <div class="bg-blue-100 p-3 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-3">
+                        <i class="fas fa-laptop text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="font-medium text-gray-800">لابتوبات</h3>
+                </a>
+                
+                <!-- Category 2 -->
+                <a href="#" class="category-card bg-white p-4 rounded-lg shadow-md text-center transition duration-300" data-category="phones">
+                    <div class="bg-green-100 p-3 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-3">
+                        <i class="fas fa-mobile-alt text-green-600 text-2xl"></i>
+                    </div>
+                    <h3 class="font-medium text-gray-800">هواتف</h3>
+                </a>
+                
+                <!-- Category 3 -->
+                <a href="#" class="category-card bg-white p-4 rounded-lg shadow-md text-center transition duration-300" data-category="headphones">
+                    <div class="bg-purple-100 p-3 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-3">
+                        <i class="fas fa-headphones text-purple-600 text-2xl"></i>
+                    </div>
+                    <h3 class="font-medium text-gray-800">سماعات</h3>
+                </a>
+                
+                <!-- Category 4 -->
+                <a href="#" class="category-card bg-white p-4 rounded-lg shadow-md text-center transition duration-300" data-category="processors">
+                    <div class="bg-red-100 p-3 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-3">
+                        <i class="fas fa-microchip text-red-600 text-2xl"></i>
+                    </div>
+                    <h3 class="font-medium text-gray-800">معالجات</h3>
+                </a>
+                
+                <!-- Category 5 -->
+                <a href="#" class="category-card bg-white p-4 rounded-lg shadow-md text-center transition duration-300" data-category="gpus">
+                    <div class="bg-yellow-100 p-3 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-3">
+                        <i class="fas fa-gamepad text-yellow-600 text-2xl"></i>
+                    </div>
+                    <h3 class="font-medium text-gray-800">كروت شاشة</h3>
+                </a>
+                
+                <!-- Category 6 -->
+                <a href="#" class="category-card bg-white p-4 rounded-lg shadow-md text-center transition duration-300" data-category="ram">
+                    <div class="bg-indigo-100 p-3 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-3">
+                        <i class="fas fa-memory text-indigo-600 text-2xl"></i>
+                    </div>
+                    <h3 class="font-medium text-gray-800">ذاكرة RAM</h3>
+                </a>
+            </div>
+        </div>
+    </section>
+<!-- Special Offers Section in Home.html -->
+<section class="py-12 bg-white">
+    <div class="container mx-auto px-4">
+        <div class="flex justify-between items-center mb-8">
+            <h2 class="text-2xl font-bold text-gray-800">العروض الخاصة</h2>
+            <a href="offers.html" class="text-blue-600 hover:text-blue-800 font-medium">عرض الكل <i class="fas fa-arrow-left mr-1"></i></a>
+        </div>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="offers-container">
+            <!-- سيتم ملؤه بواسطة JavaScript -->
+        </div>
+    </div>
+</section>
+    <!-- Featured Products -->
+    <section class="py-12 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center mb-8">
+                <h2 class="text-2xl font-bold text-gray-800">منتجات مميزة</h2>
+                <a href="#" class="text-blue-600 hover:text-blue-800 font-medium">عرض الكل <i class="fas fa-arrow-left mr-1"></i></a>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6" id="products-container">
+                <!-- Product 1 -->
+                <div class="product-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300 relative" data-category="laptops">
+                    <div class="discount-badge">15% خصم</div>
+                    <div class="p-4">
+                        <div class="h-40 flex items-center justify-center mb-4">
+                            <img src="https://images.unsplash.com/photo-1593642632823-8f785ba67e45?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="لابتوب" class="max-h-full max-w-full">
+                        </div>
+                        <h3 class="font-bold text-gray-800 mb-1">لابتوب ديل XPS 15</h3>
+                        <div class="flex items-center mb-2">
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="text-gray-500 text-sm mr-2">(48)</span>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="text-lg font-bold text-gray-800">4,299 ر.س</span>
+                            <span class="text-sm text-gray-500 line-through mr-2">5,099 ر.س</span>
+                        </div>
+                    </div>
+                    <div class="p-4 border-t border-gray-100">
+                        <button class="add-to-cart w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition" data-id="1" data-name="لابتوب ديل XPS 15" data-price="4299" data-image="https://images.unsplash.com/photo-1593642632823-8f785ba67e45?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80">
+                            أضف إلى السلة
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Product 2 -->
+                <div class="product-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300 relative" data-category="phones">
+                    <div class="used-badge">مستعمل</div>
+                    <div class="p-4">
+                        <div class="h-40 flex items-center justify-center mb-4">
+                            <img src="https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="هاتف" class="max-h-full max-w-full">
+                        </div>
+                        <h3 class="font-bold text-gray-800 mb-1">هاتف سامسونج S21 Ultra</h3>
+                        <div class="flex items-center mb-2">
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="text-gray-500 text-sm mr-2">(112)</span>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="text-lg font-bold text-gray-800">3,199 ر.س</span>
+                        </div>
+                    </div>
+                    <div class="p-4 border-t border-gray-100">
+                        <button class="add-to-cart w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition" data-id="2" data-name="هاتف سامسونج S21 Ultra" data-price="3199" data-image="https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80">
+                            أضف إلى السلة
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Product 3 -->
+                <div class="product-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300 relative" data-category="headphones">
+                    <div class="p-4">
+                        <div class="h-40 flex items-center justify-center mb-4">
+                            <img src="https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="سماعات" class="max-h-full max-w-full">
+                        </div>
+                        <h3 class="font-bold text-gray-800 mb-1">سماعات Sony WH-1000XM4</h3>
+                        <div class="flex items-center mb-2">
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="text-gray-500 text-sm mr-2">(86)</span>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="text-lg font-bold text-gray-800">899 ر.س</span>
+                        </div>
+                    </div>
+                    <div class="p-4 border-t border-gray-100">
+                        <button class="add-to-cart w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition" data-id="3" data-name="سماعات Sony WH-1000XM4" data-price="899" data-image="https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80">
+                            أضف إلى السلة
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Product 4 -->
+                <div class="product-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300 relative" data-category="processors">
+                    <div class="discount-badge">25% خصم</div>
+                    <div class="p-4">
+                        <div class="h-40 flex items-center justify-center mb-4">
+                            <img src="https://images.unsplash.com/photo-1591488320449-011701bb6704?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="معالج" class="max-h-full max-w-full">
+                        </div>
+                        <h3 class="font-bold text-gray-800 mb-1">معالج Intel Core i9-12900K</h3>
+                        <div class="flex items-center mb-2">
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                            <span class="text-gray-500 text-sm mr-2">(34)</span>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="text-lg font-bold text-gray-800">1,799 ر.س</span>
+                            <span class="text-sm text-gray-500 line-through mr-2">2,399 ر.س</span>
+                        </div>
+                    </div>
+                    <div class="p-4 border-t border-gray-100">
+                        <button class="add-to-cart w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition" data-id="4" data-name="معالج Intel Core i9-12900K" data-price="1799" data-image="https://images.unsplash.com/photo-1591488320449-011701bb6704?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80">
+                            أضف إلى السلة
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Used Products Section -->
+    <section class="py-12 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center mb-8">
+                <h2 class="text-2xl font-bold text-gray-800">قطع مستعملة بجودة عالية</h2>
+                <a href="#" class="text-blue-600 hover:text-blue-800 font-medium">عرض الكل <i class="fas fa-arrow-left mr-1"></i></a>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <!-- Used Product 1 -->
+                <div class="product-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300 relative" data-category="gpus">
+                    <div class="used-badge">مستعمل</div>
+                    <div class="p-4">
+                        <div class="h-40 flex items-center justify-center mb-4">
+                            <img src="https://images.unsplash.com/photo-1592155931584-901ac15763e3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="كرت شاشة" class="max-h-full max-w-full">
+                        </div>
+                        <h3 class="font-bold text-gray-800 mb-1">كرت شاشة NVIDIA RTX 3080</h3>
+                        <div class="flex items-center mb-2">
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="text-gray-500 text-sm mr-2">(27)</span>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="text-lg font-bold text-gray-800">2,499 ر.س</span>
+                            <span class="text-sm text-gray-500 line-through mr-2">3,299 ر.س</span>
+                        </div>
+                    </div>
+                    <div class="p-4 border-t border-gray-100">
+                        <button class="add-to-cart w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition" data-id="5" data-name="كرت شاشة NVIDIA RTX 3080" data-price="2499" data-image="https://images.unsplash.com/photo-1592155931584-901ac15763e3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80">
+                            أضف إلى السلة
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Used Product 2 -->
+                <div class="product-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300 relative" data-category="phones">
+                    <div class="used-badge">مستعمل</div>
+                    <div class="p-4">
+                        <div class="h-40 flex items-center justify-center mb-4">
+                            <img src="https://images.unsplash.com/photo-1587202372775-e229f1727040?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="هاتف" class="max-h-full max-w-full">
+                        </div>
+                        <h3 class="font-bold text-gray-800 mb-1">هاتف آيفون 12 Pro Max</h3>
+                        <div class="flex items-center mb-2">
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                            <span class="text-gray-500 text-sm mr-2">(19)</span>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="text-lg font-bold text-gray-800">2,899 ر.س</span>
+                        </div>
+                    </div>
+                    <div class="p-4 border-t border-gray-100">
+                        <button class="add-to-cart w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition" data-id="6" data-name="هاتف آيفون 12 Pro Max" data-price="2899" data-image="https://images.unsplash.com/photo-1587202372775-e229f1727040?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80">
+                            أضف إلى السلة
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Used Product 3 -->
+                <div class="product-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300 relative" data-category="laptops">
+                    <div class="used-badge">مستعمل</div>
+                    <div class="p-4">
+                        <div class="h-40 flex items-center justify-center mb-4">
+                            <img src="https://images.unsplash.com/photo-1593640408182-31c228ca3563?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="لابتوب" class="max-h-full max-w-full">
+                        </div>
+                        <h3 class="font-bold text-gray-800 mb-1">لابتوب ماك بوك برو M1</h3>
+                        <div class="flex items-center mb-2">
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="text-gray-500 text-sm mr-2">(42)</span>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="text-lg font-bold text-gray-800">3,799 ر.س</span>
+                        </div>
+                    </div>
+                    <div class="p-4 border-t border-gray-100">
+                        <button class="add-to-cart w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition" data-id="7" data-name="لابتوب ماك بوك برو M1" data-price="3799" data-image="https://images.unsplash.com/photo-1593640408182-31c228ca3563?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80">
+                            أضف إلى السلة
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Used Product 4 -->
+                <div class="product-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300 relative" data-category="ram">
+                    <div class="used-badge">مستعمل</div>
+                    <div class="p-4">
+                        <div class="h-40 flex items-center justify-center mb-4">
+                            <img src="https://images.unsplash.com/photo-1581093450021-5cd168dfd8f3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="ذاكرة" class="max-h-full max-w-full">
+                        </div>
+                        <h3 class="font-bold text-gray-800 mb-1">ذاكرة RAM 32GB DDR4</h3>
+                        <div class="flex items-center mb-2">
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                            <span class="text-gray-500 text-sm mr-2">(15)</span>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="text-lg font-bold text-gray-800">499 ر.س</span>
+                        </div>
+                    </div>
+                    <div class="p-4 border-t border-gray-100">
+                        <button class="add-to-cart w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition" data-id="8" data-name="ذاكرة RAM 32GB DDR4" data-price="499" data-image="https://images.unsplash.com/photo-1581093450021-5cd168dfd8f3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80">
+                            أضف إلى السلة
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-12 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="bg-white p-6 rounded-lg shadow-sm flex items-start">
+                    <div class="bg-blue-100 p-3 rounded-full mr-4">
+                        <i class="fas fa-truck text-blue-600"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg mb-2">شحن سريع</h3>
+                        <p class="text-gray-600">توصيل سريع خلال 1-3 أيام عمل لجميع أنحاء المملكة</p>
+                    </div>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="bg-white p-6 rounded-lg shadow-sm flex items-start">
+                    <div class="bg-green-100 p-3 rounded-full mr-4">
+                        <i class="fas fa-shield-alt text-green-600"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg mb-2">ضمان المنتجات</h3>
+                        <p class="text-gray-600">ضمان لمدة عام على جميع المنتجات الجديدة و3 أشهر للمستعملة</p>
+                    </div>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="bg-white p-6 rounded-lg shadow-sm flex items-start">
+                    <div class="bg-purple-100 p-3 rounded-full mr-4">
+                        <i class="fas fa-undo-alt text-purple-600"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg mb-2">إرجاع سهل</h3>
+                        <p class="text-gray-600">إمكانية الإرجاع خلال 14 يومًا إذا لم يناسبك المنتج</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-12 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-2xl font-bold mb-8 text-center text-gray-800">آراء عملائنا</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-gray-50 p-6 rounded-lg">
+                    <div class="flex items-center mb-4">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="عميل" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold">أحمد محمد</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"اشتريت لابتوب من المتجر وكانت تجربة رائعة، المنتج وصل بحالة ممتازة وبسرعة كبيرة. شكرًا لكم!"</p>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="bg-gray-50 p-6 rounded-lg">
+                    <div class="flex items-center mb-4">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="عميل" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold">سارة عبدالله</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"سماعات Sony التي اشتريتها مستعملة كانت بحالة ممتازة وبسعر مناسب جدًا مقارنة بالسوق. أوصي بهذا المتجر."</p>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="bg-gray-50 p-6 rounded-lg">
+                    <div class="flex items-center mb-4">
+                        <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="عميل" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold">خالد سعيد</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"خدمة العملاء ممتازة وساعدوني في اختيار كرت الشاشة المناسب لجهازي. المنتج يعمل بشكل رائع حتى الآن."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="py-12 bg-blue-600 text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-2xl font-bold mb-4">اشترك في نشرتنا البريدية</h2>
+            <p class="mb-6 max-w-2xl mx-auto">احصل على آخر العروض والتخفيضات مباشرة إلى بريدك الإلكتروني</p>
+            
+            <div class="flex flex-col md:flex-row max-w-md mx-auto md:max-w-xl">
+                <input type="email" placeholder="بريدك الإلكتروني" class="flex-grow py-3 px-4 rounded-lg text-gray-800 focus:outline-none mb-2 md:mb-0 md:mr-2">
+                <button class="bg-white text-blue-600 py-3 px-6 rounded-lg font-medium hover:bg-gray-100 transition">اشترك الآن</button>
+            </div>
+        </div>
+    </section>
+
+   <!-- Footer -->
+    <footer class="bg-gray-800 text-white pt-12 pb-6">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <!-- Column 1 -->
+                <div>
+                    <div class="flex items-center mb-4">
+                        <div class="bg-blue-600 text-white p-2 rounded-lg mr-2">
+                            <i class="fas fa-microchip"></i>
+                        </div>
+                        <h3 class="text-xl font-bold">تيك ستور</h3>
+                    </div>
+                    <p class="text-gray-400 mb-4">متجرك الإلكتروني لجميع قطع الحاسوب والإلكترونيات بجودة عالية وأسعار تنافسية.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white" style="padding-left: 10px; scale: 1.2;"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white" style="scale: 1.2;"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/abohadige_595" style="scale: 1.2;" target="_blank" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white" style="scale: 1.2;"><i class="fab fa-snapchat-ghost"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Column 2 -->
+                <div>
+                    <h3 class="text-lg font-bold mb-4">روابط سريعة</h3>
+                    <ul class="space-y-2">
+                        <li><a href="Home.html" class="text-gray-400 hover:text-white">الرئيسية</a></li>
+                        <li><a href="products.html" class="text-gray-400 hover:text-white">المنتجات</a></li>
+                        <li><a href="offers.html" class="text-gray-400 hover:text-white">العروض</a></li>
+                        <li><a href="about.html" class="text-gray-400 hover:text-white">من نحن</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-white">اتصل بنا</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Column 3 -->
+                <div>
+                    <h3 class="text-lg font-bold mb-4">خدمة العملاء</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">حسابي</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">تتبع الطلب</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">سياسة الإرجاع</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">الأسئلة الشائعة</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">الشروط والأحكام</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Column 4 -->
+                <div>
+                    <h3 class="text-lg font-bold mb-4">اتصل بنا</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-map-marker-alt text-gray-400 mr-2" >&nbsp;</i>
+                            <span class="text-gray-400">إدلب، الجمهورية العربية السورية</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone-alt text-gray-400 mr-2">&nbsp;</i>
+                            <span class="text-gray-400">+90 552 534 9289</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope text-gray-400 mr-2">&nbsp;</i>
+                            <span class="text-gray-400">info@techstore.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 pt-6 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm mb-4 md:mb-0">© 2023 تيك ستور. جميع الحقوق محفوظة.</p>
+                <div class="flex space-x-6">
+                    <img src="https://via.placeholder.com/40x25" alt="Visa" class="h-6">
+                    <img src="https://via.placeholder.com/40x25" alt="Mastercard" class="h-6">
+                    <img src="https://via.placeholder.com/40x25" alt="Mada" class="h-6">
+                    <img src="https://via.placeholder.com/40x25" alt="Apple Pay" class="h-6">
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Notification -->
+    <div id="notification" class="hidden fixed bottom-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50">
+        <div class="flex items-center">
+            <i class="fas fa-check-circle mr-2"></i>
+            <span id="notification-message">تمت إضافة المنتج إلى السلة</span>
+        </div>
+    </div>
+
+   
+
+</body>
+</html>

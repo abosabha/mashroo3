@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سلة التسوق - تيك ستور</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="CSS/style.css">
+    <script src="JS/products-data.js"></script>
+    <script src="JS/cart.js"></script>
+</head>
+<body class="bg-gray-50">
+    <!-- نفس الهيدر السابق -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <!-- ... -->
+    </header>
+
+    <!-- محتوى صفحة السلة -->
+    <section class="py-12">
+        <div class="container mx-auto px-4">
+            <h1 class="text-2xl font-bold mb-8 text-center text-gray-800">سلة التسوق</h1>
+            
+            <div class="flex flex-col lg:flex-row gap-8">
+                <!-- عناصر السلة -->
+                <div class="lg:w-2/3">
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                        <div class="p-4 border-b border-gray-200 bg-gray-50">
+                            <h2 class="font-bold text-lg">المنتجات</h2>
+                        </div>
+                        
+                        <div id="cart-page-items" class="divide-y divide-gray-200">
+                            <!-- سيتم ملؤه بواسطة JavaScript -->
+                            <div class="p-8 text-center">
+                                <i class="fas fa-shopping-cart text-4xl text-gray-300 mb-4"></i>
+                                <p class="text-gray-500">سلة التسوق فارغة</p>
+                                <a href="products.html" class="inline-block mt-4 bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition">تصفح المنتجات</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- ملخص الطلب -->
+                <div class="lg:w-1/3">
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden sticky top-20">
+                        <div class="p-4 border-b border-gray-200 bg-gray-50">
+                            <h2 class="font-bold text-lg">ملخص الطلب</h2>
+                        </div>
+                        
+                        <div class="p-4">
+                            <div class="space-y-3 mb-4">
+                                <div class="flex justify-between">
+                                    <span>عدد المنتجات:</span>
+                                    <span id="summary-count">0</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span>المجموع الجزئي:</span>
+                                    <span id="summary-subtotal">0.00 ر.س</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span>التوصيل:</span>
+                                    <span id="summary-shipping">0.00 ر.س</span>
+                                </div>
+                                <div class="flex justify-between border-t border-gray-200 pt-3">
+                                    <span class="font-bold">المجموع الكلي:</span>
+                                    <span id="summary-total" class="font-bold">0.00 ر.س</span>
+                                </div>
+                            </div>
+                            
+                            <a href="checkout.html" class="block w-full bg-blue-600 text-white py-3 text-center rounded-lg hover:bg-blue-700 transition mb-3">إتمام الشراء</a>
+                            <a href="products.html" class="block w-full border border-blue-600 text-blue-600 py-3 text-center rounded-lg hover:bg-blue-50 transition">استمر بالتسوق</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- نفس الفوتر السابق -->
+    <footer class="bg-gray-800 text-white pt-12 pb-6">
+        <!-- ... -->
+    </footer>
+
+    <script>
+        // تهيئة صفحة السلة
+        document.addEventListener('DOMContentLoaded', function() {
+            renderCartPage();
+        });
+    </script>
+</body>
+</html>

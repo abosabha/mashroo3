@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اتصل بنا - تيك ستور</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="CSS/contact.css">
+    <script src="JS/contact.js"></script>
+    <script src="JS/func.js"></script>
+
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex items-center justify-between">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <div class="bg-blue-600 text-white p-2 rounded-lg mr-2">
+                        <i class="fas fa-microchip text-xl"></i>
+                    </div>
+                    <h1 class="text-xl font-bold text-gray-800">تيك ستور</h1>
+                </div>
+                
+                <!-- Search Bar -->
+                <div class="hidden md:flex flex-1 mx-6">
+                    <div class="relative w-full max-w-xl">
+                        <input type="text" placeholder="ابحث عن منتجات..." class="w-full py-2 px-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        <button class="absolute left-0 top-0 h-full px-4 text-gray-500">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Navigation and Cart -->
+                <div class="flex items-center space-x-6">
+                    <button id="mobile-menu-button" class="md:hidden text-gray-600">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                    
+                    <nav class="hidden md:flex space-x-6 header_nav_a">
+                        <a href="index.html" class="text-gray-700 hover:text-blue-600 font-medium" style=" margin-left: 20px;">الرئيسية</a>
+                        <a href="products.html" class="text-gray-700 hover:text-blue-600 font-medium">المنتجات</a>
+                        <a href="offers.html" class="text-gray-700 hover:text-blue-600 font-medium">العروض</a>
+                        <a href="about.html" class="text-gray-700 hover:text-blue-600 font-medium">من نحن</a>
+                        <a href="contact.html" class="text-gray-700 hover:text-blue-600 font-medium">اتصل بنا</a>
+                        <a href="login.html" class="text-gray-700 hover:text-blue-600 font-medium">تسجيل الدخول</a>
+                    </nav>
+                    
+                    <div class="relative">
+                        <button id="cart-button" class="text-gray-700 hover:text-blue-600 relative">
+                            <i class="fas fa-shopping-cart text-xl"></i>
+                            <span id="cart-count" class="absolute -top-2 -right-2 bg-blue-600 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">0</span>
+                        </button>
+                        
+                        <!-- Cart Dropdown -->
+                        <div id="cart-dropdown" class="hidden absolute right-0 mt-2 w-72 bg-white rounded-lg shadow-xl z-50 border border-gray-200">
+                            <div class="p-4 border-b border-gray-200">
+                                <h3 class="font-bold text-gray-800">سلة التسوق</h3>
+                            </div>
+                            <div id="cart-items" class="max-h-60 overflow-y-auto p-2">
+                                <p class="text-gray-500 text-center py-4">السلة فارغة</p>
+                            </div>
+                            <div class="p-4 border-t border-gray-200">
+                                <div class="flex justify-between mb-3">
+                                    <span class="font-medium">المجموع:</span>
+                                    <span id="cart-total" class="font-bold">0.00 ر.س</span>
+                                </div>
+                                <a href="#" class="block w-full bg-blue-600 text-white py-2 text-center rounded-lg hover:bg-blue-700 transition">إتمام الشراء</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="hidden md:block">
+                        <a href="account.html" class="text-gray-700 hover:text-blue-600">
+                            <i class="fas fa-user text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden md:hidden mt-4">
+                <div class="flex flex-col space-y-3">
+                    <a href="#" class="block py-2 px-4 bg-gray-100 rounded-lg text-gray-700">الرئيسية</a>
+                    <a href="#" class="block py-2 px-4 bg-gray-100 rounded-lg text-gray-700">المنتجات</a>
+                    <a href="#" class="block py-2 px-4 bg-gray-100 rounded-lg text-gray-700">العروض</a>
+                    <a href="#" class="block py-2 px-4 bg-gray-100 rounded-lg text-gray-700">من نحن</a>
+                    <a href="#" class="block py-2 px-4 bg-gray-100 rounded-lg text-gray-700">اتصل بنا</a>
+                </div>
+                
+                <div class="mt-4">
+                    <input type="text" placeholder="ابحث عن منتجات..." class="w-full py-2 px-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-gradient text-white py-16">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl font-bold mb-4">اتصل بنا</h1>
+            <p class="text-xl max-w-2xl mx-auto">نحن هنا لمساعدتك! تواصل معنا بأي استفسار أو اقتراح</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="py-12 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row contact-container">
+                <!-- Contact Info -->
+                <div class="md:w-1/3 contact-info md:pr-8">
+                    <h2 class="text-2xl font-bold mb-6 text-gray-800">معلومات التواصل</h2>
+                    
+                    <div class="space-y-6">
+                        <!-- Phone -->
+                        <div class="contact-card p-6">
+                            <div class="flex items-start">
+                                <div class="bg-blue-100 p-3 rounded-full text-blue-600 mr-4">
+                                    <i class="fas fa-phone-alt"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-lg text-gray-800">الهاتف</h3>
+                                    <p class="text-gray-600 mt-1">+90 552 534 9289</p>
+                                    <p class="text-sm text-gray-500 mt-2">متاح من الساعة 9 صباحاً حتى 5 مساءً</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Email -->
+                        <div class="contact-card p-6">
+                            <div class="flex items-start">
+                                <div class="bg-green-100 p-3 rounded-full text-green-600 mr-4">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-lg text-gray-800">البريد الإلكتروني</h3>
+                                    <p class="text-gray-600 mt-1">abohadige@gmail.com</p>
+                                    <p class="text-sm text-gray-500 mt-2">الرد خلال 24 ساعة</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Social Media -->
+                        <div class="contact-card p-6">
+                            <div class="flex items-start">
+                                <div class="bg-purple-100 p-3 rounded-full text-purple-600 mr-4">
+                                    <i class="fas fa-share-alt"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-lg text-gray-800">وسائل التواصل الاجتماعي</h3>
+                                    <div class="flex space-x-3 mt-3">
+                                        <a href="https://www.instagram.com/abohadige_595" target="_blank" class="social-icon bg-gradient-to-r from-purple-500 to-pink-500 text-white">
+                                            <i class="fab fa-instagram"></i>
+                                        </a>
+                                        <a href="#" target="_blank" class="social-icon bg-blue-600 text-white">
+                                            <i class="fab fa-facebook-f"></i>
+                                        </a>
+                                        <a href="#" target="_blank" class="social-icon bg-blue-400 text-white">
+                                            <i class="fab fa-twitter"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Tips -->
+                        <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded-r">
+                            <div class="flex">
+                                <div class="flex-shrink-0 text-yellow-400 mr-3">
+                                    <i class="fas fa-lightbulb"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-yellow-800">نصائح للتواصل الفعال</h4>
+                                    <ul class="list-disc list-inside text-yellow-700 text-sm mt-2 space-y-1">
+                                        <li>اذكر رقم طلبك إذا كان لديك استفسار عن طلب سابق</li>
+                                        <li>كن واضحاً وحدد طلبك بدقة</li>
+                                        <li>سنجيب على جميع الاستفسارات خلال 24 ساعة</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Contact Form -->
+                <div class="md:w-2/3 md:pl-8 mt-8 md:mt-0" style="padding-right: 32px;">
+                    <h2 class="text-2xl font-bold mb-6 text-gray-800">أرسل لنا رسالة</h2>
+                    
+                    <form class="space-y-4">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label for="name" class="block text-gray-700 mb-2">الاسم الكامل</label>
+                                <input type="text" id="name" class="form-input" required>
+                            </div>
+                            <div>
+                                <label for="email" class="block text-gray-700 mb-2">البريد الإلكتروني</label>
+                                <input type="email" id="email" class="form-input" required>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label for="subject" class="block text-gray-700 mb-2">الموضوع</label>
+                            <input type="text" id="subject" class="form-input" required>
+                        </div>
+                        
+                        <div>
+                            <label for="message" class="block text-gray-700 mb-2">الرسالة</label>
+                            <textarea id="message" rows="5" class="form-input" required></textarea>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <input type="checkbox" id="newsletter" class="rounded text-blue-600 focus:ring-blue-500">
+                            <label for="newsletter" class="mr-2 text-gray-700">أرغب في تلقي النشرة البريدية</label>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn">
+                            إرسال الرسالة
+                            <i class="fas fa-paper-plane mr-2"></i>
+                        </button>
+                    </form>
+                    
+                    <!-- FAQ Section -->
+                    <div class="mt-12">
+                        <h3 class="text-xl font-bold mb-4 text-gray-800">أسئلة متكررة</h3>
+                        
+                        <div class="space-y-3">
+                            <div class="border-b border-gray-200 pb-3">
+                                <button class="flex justify-between items-center w-full text-right">
+                                    <span class="font-medium text-gray-800">كيف يمكنني تتبع طلبي؟</span>
+                                    <i class="fas fa-chevron-down text-gray-500 transition-transform duration-300"></i>
+                                </button>
+                                <div class="hidden pt-2 text-gray-600">
+                                    يمكنك تتبع طلبك من خلال الرابط الذي تم إرساله إلى بريدك الإلكتروني أو من خلال صفحة "تتبع الطلب" في موقعنا.
+                                </div>
+                            </div>
+                            
+                            <div class="border-b border-gray-200 pb-3">
+                                <button class="flex justify-between items-center w-full text-right">
+                                    <span class="font-medium text-gray-800">ما هي سياسة الإرجاع؟</span>
+                                    <i class="fas fa-chevron-down text-gray-500 transition-transform duration-300"></i>
+                                </button>
+                                <div class="hidden pt-2 text-gray-600">
+                                    يمكنك إرجاع المنتج خلال 14 يومًا من استلامه بشرط أن يكون بحالته الأصلية مع جميع ملحقاته.
+                                </div>
+                            </div>
+                            
+                            <div class="border-b border-gray-200 pb-3">
+                                <button class="flex justify-between items-center w-full text-right">
+                                    <span class="font-medium text-gray-800">ما هي أوقات عمل خدمة العملاء؟</span>
+                                    <i class="fas fa-chevron-down text-gray-500 transition-transform duration-300"></i>
+                                </button>
+                                <div class="hidden pt-2 text-gray-600">
+                                    خدمة العملاء متاحة من الأحد إلى الخميس من الساعة 9 صباحًا حتى 5 مساءً.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white pt-12 pb-6">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <!-- Column 1 -->
+                <div>
+                    <div class="flex items-center mb-4">
+                        <div class="bg-blue-600 text-white p-2 rounded-lg mr-2">
+                            <i class="fas fa-microchip"></i>
+                        </div>
+                        <h3 class="text-xl font-bold">تيك ستور</h3>
+                    </div>
+                    <p class="text-gray-400 mb-4">متجرك الإلكتروني لجميع قطع الحاسوب والإلكترونيات بجودة عالية وأسعار تنافسية.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white" style="padding-left: 10px; scale: 1.2;"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white" style="scale: 1.2;"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/abohadige_595" style="scale: 1.2;" target="_blank" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white" style="scale: 1.2;"><i class="fab fa-snapchat-ghost"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Column 2 -->
+                <div>
+                    <h3 class="text-lg font-bold mb-4">روابط سريعة</h3>
+                    <ul class="space-y-2">
+                        <li><a href="Home.html" class="text-gray-400 hover:text-white">الرئيسية</a></li>
+                        <li><a href="products.html" class="text-gray-400 hover:text-white">المنتجات</a></li>
+                        <li><a href="offers.html" class="text-gray-400 hover:text-white">العروض</a></li>
+                        <li><a href="about.html" class="text-gray-400 hover:text-white">من نحن</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-white">اتصل بنا</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Column 3 -->
+                <div>
+                    <h3 class="text-lg font-bold mb-4">خدمة العملاء</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">حسابي</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">تتبع الطلب</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">سياسة الإرجاع</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">الأسئلة الشائعة</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">الشروط والأحكام</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Column 4 -->
+                <div>
+                    <h3 class="text-lg font-bold mb-4">اتصل بنا</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-map-marker-alt text-gray-400 mr-2"></i>
+                            <span class="text-gray-400">الرياض، المملكة العربية السعودية</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone-alt text-gray-400 mr-2"></i>
+                            <span class="text-gray-400">+90 552 534 9289</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope text-gray-400 mr-2"></i>
+                            <span class="text-gray-400">info@techstore.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 pt-6 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm mb-4 md:mb-0">© 2023 تيك ستور. جميع الحقوق محفوظة.</p>
+                <div class="flex space-x-6">
+                    <img src="https://via.placeholder.com/40x25" alt="Visa" class="h-6">
+                    <img src="https://via.placeholder.com/40x25" alt="Mastercard" class="h-6">
+                    <img src="https://via.placeholder.com/40x25" alt="Mada" class="h-6">
+                    <img src="https://via.placeholder.com/40x25" alt="Apple Pay" class="h-6">
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

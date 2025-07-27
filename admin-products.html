@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إدارة المنتجات - تيك ستور</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../CSS/admin.css">
+    <link rel="stylesheet" href="CSS/style.css">
+    <script src="JS/admin-products.js"></script>
+    <script src="JS/shared-products.js"></script>
+</head>
+<body class="bg-gray-100">
+    <!-- شريط التنقل الجانبي -->
+    <div class="flex">
+        <aside class="w-64 bg-blue-800 text-white h-screen sticky top-0 p-4">
+            <div class="flex items-center mb-8">
+                <i class="fas fa-microchip text-2xl mr-2"></i>
+                <h1 class="text-xl font-bold">لوحة التحكم</h1>
+            </div>
+            <nav>
+                <ul class="space-y-2">
+                    <li><a href="admin-dashboard.html" class="block py-2 px-4 rounded hover:bg-blue-700"><i class="fas fa-chart-line mr-2"></i> الإحصائيات</a></li>
+                    <li><a href="admin-products.html" class="block py-2 px-4 rounded bg-blue-900"><i class="fas fa-boxes mr-2"></i> المنتجات</a></li>
+                    <li><a href="admin-orders.html" class="block py-2 px-4 rounded hover:bg-blue-700"><i class="fas fa-shopping-cart mr-2"></i> الطلبات</a></li>
+                    <li><a href="admin-users.html" class="block py-2 px-4 rounded hover:bg-blue-700"><i class="fas fa-users mr-2"></i> المستخدمين</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- المحتوى الرئيسي -->
+        <main class="flex-1 p-8">
+            <div class="flex justify-between items-center mb-8">
+                <h2 class="text-2xl font-bold text-gray-800">إدارة المنتجات</h2>
+                <button id="add-product-btn" class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700">
+                    <i class="fas fa-plus mr-2"></i> إضافة منتج
+                </button>
+            </div>
+
+            <!-- جدول المنتجات -->
+            <div class="bg-white rounded-lg shadow overflow-hidden">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">الصورة</th>
+                            <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">الاسم</th>
+                            <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">الفئة</th>
+                            <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">السعر</th>
+                            <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">الحالة</th>
+                            <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">الخصم</th>
+                            <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">الإجراءات</th>
+                        </tr>
+                    </thead>
+                    <tbody id="products-table-body" class="bg-white divide-y divide-gray-200">
+                        <!-- سيتم ملؤه بواسطة JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+
+    <!-- نموذج إضافة/تعديل المنتج -->
+    <div id="product-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
+        <div class="bg-white rounded-lg w-full max-w-2xl max-h-screen overflow-y-auto">
+            <div class="flex justify-between items-center border-b p-4">
+                <h3 id="modal-title" class="text-lg font-bold">إضافة منتج جديد</h3>
+                <button id="close-modal" class="text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <form id="product-form" class="p-6">
+                <input type="hidden" id="product-id">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- الاسم -->
+                    <div class="md:col-span-2">
+                        <label for="name" class="block text-gray-700 mb-2">اسم المنتج</label>
+                        <input type="text" id="name" required class="w-full px-4 py-2 border border-gray-300 rounded-lg">
+                    </div>
+                     <!-- السعر -->
+                    <div>
+                        <label for="price" class="block text-gray-700 mb-2">السعر (ر.س)</label>
+                        <input type="number" id="price" min="0" step="0.01" required class="w-full px-4 py-2 border border-gray-300 rounded-lg">
+                    </div> 
+                   <!-- قسم الخصم -->
+                    <div class="md:col-span-2">
+                        <div class="flex items-center mb-2">
+                            <input type="checkbox" id="has-discount" class="w-4 h-4 text-blue-600 rounded border-gray-300 focus:ring-blue-500">
+                            <label for="has-discount" class="mr-2 text-gray-700 cursor-pointer">يوجد خصم على هذا المنتج</label>
+                        </div>
+                        
+                        <div id="discount-fields" class="hidden bg-gray-50 p-4 rounded-lg">
+                            <div class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <label for="discount-percentage" class="block text-gray-700 mb-2">نسبة الخصم %</label>
+                                    <input type="number" id="discount-percentage" min="1" max="100" class="w-full px-4 py-2 border border-gray-300 rounded-lg">
+                                </div>
+                                <div>
+                                    <label for="old-price" class="block text-gray-700 mb-2">السعر قبل الخصم</label>
+                                    <input type="number" id="old-price" min="0" step="0.01" class="w-full px-4 py-2 border border-gray-300 rounded-lg">
+                                </div>
+                            </div>
+                            <p id="discount-message" class="text-sm text-green-600 mt-2"></p>
+                        </div>
+                    </div>
+                    <!-- الفئة -->
+                    <div>
+                        <label for="category" class="block text-gray-700 mb-2">الفئة</label>
+                        <select id="category" required class="w-full px-4 py-2 border border-gray-300 rounded-lg">
+                            <option value="">اختر الفئة</option>
+                            <option value="laptops">لابتوبات</option>
+                            <option value="phones">هواتف</option>
+                            <option value="headphones">سماعات</option>
+                            <option value="processors">معالجات</option>
+                            <option value="gpus">كروت شاشة</option>
+                            <option value="ram">ذاكرة RAM</option>
+                        </select>
+                    </div>
+                    
+                    <!-- الحالة -->
+                    <div>
+                        <label class="block text-gray-700 mb-2">حالة المنتج</label>
+                        <div class="flex space-x-4">
+                            <label class="flex items-center">
+                                <input type="radio" name="condition" value="new" checked class="mr-2">
+                                جديد
+                            </label>
+                            <label class="flex items-center">
+                                <input type="radio" name="condition" value="used" class="mr-2">
+                                مستعمل
+                            </label>
+                        </div>
+                    </div>
+                    
+                   <!-- قسم صورة المنتج -->
+                        <div class="md:col-span-2">
+                            <label class="block text-gray-700 mb-2">صورة المنتج *</label>
+                            
+                            <!-- تباديل بين رفع صورة أو رابط -->
+                            <div class="flex mb-3">
+                                <button type="button" id="upload-tab" class="px-4 py-2 border border-blue-500 bg-blue-50 text-blue-600 rounded-r-lg">
+                                    <i class="fas fa-upload mr-2"></i>رفع صورة
+                                </button>
+                                <button type="button" id="url-tab" class="px-4 py-2 border border-gray-300 bg-white text-gray-700 rounded-l-lg">
+                                    <i class="fas fa-link mr-2"></i>رابط صورة
+                                </button>
+                            </div>
+                            
+                            <!-- قسم رفع الصورة -->
+                            <div id="upload-section" class="border border-gray-200 rounded-lg p-4">
+                                <div class="flex items-center justify-center w-full">
+                                    <label for="image-upload" class="flex flex-col items-center justify-center w-full h-32 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100">
+                                        <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                                            <i class="fas fa-cloud-upload-alt text-3xl text-gray-400 mb-2"></i>
+                                            <p class="mb-2 text-sm text-gray-500">اسحب وأسقط الصورة هنا أو انقر للاختيار</p>
+                                            <p class="text-xs text-gray-500">PNG, JPG, JPEG (الحجم الأقصى 5MB)</p>
+                                        </div>
+                                        <input id="image-upload" type="file" accept="image/*" class="hidden" />
+                                    </label>
+                                </div>
+                                <div id="upload-preview" class="mt-3 hidden">
+                                    <img id="preview-image" src="#" alt="Preview" class="max-h-32 mx-auto">
+                                </div>
+                            </div>
+                            
+                            <!-- قسم رابط الصورة (مخفي في البداية) -->
+                            <div id="url-section" class="hidden border border-gray-200 rounded-lg p-4">
+                                <label for="image-url" class="block text-gray-700 mb-2">رابط الصورة</label>
+                                <input type="url" id="image-url" placeholder="https://example.com/image.jpg" class="w-full px-4 py-2 border border-gray-300 rounded-lg">
+                                <div id="url-preview" class="mt-3 hidden">
+                                    <img id="preview-url-image" src="#" alt="Preview" class="max-h-32 mx-auto">
+                                </div>
+                            </div>
+                        </div>
+                    
+                    <!-- الوصف -->
+                    <div class="md:col-span-2">
+                        <label for="description" class="block text-gray-700 mb-2">وصف المنتج</label>
+                        <textarea id="description" rows="3" required class="w-full px-4 py-2 border border-gray-300 rounded-lg"></textarea>
+                    </div>
+                    
+                    <!-- التقييم -->
+                    <div>
+                        <label for="rating" class="block text-gray-700 mb-2">التقييم</label>
+                        <select id="rating" class="w-full px-4 py-2 border border-gray-300 rounded-lg">
+                            <option value="5">5 نجوم</option>
+                            <option value="4.5">4.5 نجوم</option>
+                            <option value="4">4 نجوم</option>
+                            <option value="3.5">3.5 نجوم</option>
+                            <option value="3">3 نجوم</option>
+                        </select>
+                    </div>
+                    
+                    <!-- الكمية -->
+                    <div>
+                        <label for="stock" class="block text-gray-700 mb-2">الكمية المتاحة</label>
+                        <input type="number" id="stock" min="0" value="1" class="w-full px-4 py-2 border border-gray-300 rounded-lg">
+                    </div>
+                </div>
+                
+                <div class="mt-8 flex justify-end space-x-3">
+                    <button type="button" id="cancel-btn" class="px-6 py-2 border border-gray-300 rounded-lg hover:bg-gray-100">
+                        إلغاء
+                    </button>
+                    <button type="submit" class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700">
+                        حفظ المنتج
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="../JS/admin-products.js"></script>
+</body>
+</html>
