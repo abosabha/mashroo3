@@ -1,0 +1,83 @@
+/* أنماط عامة للوحة التحكم */
+body {
+    font-family: 'Tajawal', sans-serif;
+}
+
+/* شريط التنقل الجانبي */
+aside {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* الجدول */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: right;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+th {
+    background-color: #f9fafb;
+    font-weight: 600;
+}
+
+tr:hover {
+    background-color: #f9fafb;
+}
+
+/* النموذج */
+#product-modal {
+    transition: all 0.3s ease;
+}
+
+/* الأزرار */
+button {
+    transition: all 0.2s ease;
+}
+
+button:hover {
+    transform: translateY(-1px);
+}
+
+/* العلامات */
+.badge {
+    display: inline-block;
+    padding: 0.25rem 0.5rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+/* تنسيقات قسم الصورة */
+#upload-section, #url-section {
+    transition: all 0.3s ease;
+}
+
+#image-upload-label:hover {
+    background-color: #f9fafb;
+}
+
+/* تنسيقات أزرار التبديل */
+#upload-tab, #url-tab {
+    transition: all 0.2s ease;
+}
+
+#upload-tab:hover, #url-tab:hover {
+    filter: brightness(95%);
+}
+
+/* تنسيقات معاينة الصورة */
+#preview-image, #preview-url-image {
+    max-width: 100%;
+    border-radius: 0.5rem;
+    border: 1px solid #e5e7eb;
+}
+
+/* تنسيقات قسم الخصم */
+#discount-fields {
+    transition: all 0.3s ease;
+}

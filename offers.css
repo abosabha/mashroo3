@@ -1,0 +1,74 @@
+
+ @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap');
+ 
+ body {
+     font-family: 'Tajawal', sans-serif;
+     background-color: #f5f7fa;
+ }
+ 
+ .hero-gradient {
+     background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+ }
+ 
+ .product-card:hover {
+     transform: translateY(-5px);
+     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+ }
+ 
+ .discount-badge {
+     position: absolute;
+     top: 10px;
+     left: 10px;
+     background-color: #ef4444;
+     color: white;
+     padding: 2px 8px;
+     border-radius: 4px;
+     font-size: 12px;
+     font-weight: bold;
+ }
+ /* أنماط خاصة بصفحة العروض */
+.discount-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #ef4444;
+    color: white;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: bold;
+    z-index: 10;
+}
+
+.used-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #6b7280;
+    color: white;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: bold;
+    z-index: 10;
+}
+
+.product-card {
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+#special-offers-container .product-card {
+    border: 2px solid #ef4444;
+}
+
+#special-offers-container .product-card:hover {
+    box-shadow: 0 10px 20px rgba(239, 68, 68, 0.2);
+}
+  
